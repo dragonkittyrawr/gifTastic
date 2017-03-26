@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
-	<title>Wubalubadubdub</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="reset.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
-
-	<!-- JQUERY LINK NEEDED HERE!!!!!!! <script src=""></script> -->
-
+    <title>Wubalubadubdub</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 </head>
+
 <body>
-<div id="buttonCorral"></div>
+    <div id="buttonCorral"></div>
+    <form id="newTopicForm">
+        <label for="tInput">Your favorite show missing?  Add it?</label>
+        <input type="text" id="tInput" placeholder="Tiny Toons">
+        <br>
+        <!-- Button triggers new movie to be added -->
+        <input id="addTopic" type="submit" value="Add">
+    </form>
 
-
-<script type="text/javascript" src="assets/javascript/app.js"></script>
+    <div id="gifCorral"></div>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
+
 </html>
