@@ -6,6 +6,12 @@
 
 var topics = ["The Gummy Bears", "David the Gnome", "Doug", "Teenage Mutant Ninja Turtles", "Darkwing Duck", "The Tick", "Spongebob", "She-ra", "The Fairly Odd Parents", "Jem and the Holograms", "Rocko's Modern Life", "Daria", "Recess", "Lloyd in Space", "Jimmy Neutron", "The Rocky and Bullwinkle Show", "Animaniacs", "Carebears", "Fragglerock", "My Little Pony"];
 
+var results = "";
+
+var stillGif = "";
+
+var moveGif = "";
+
 
 // Your app should take the topics in this array and create buttons in your HTML.
 // Try using a loop that appends a button for each string in the array.
@@ -53,40 +59,48 @@ function releaseGifs() {
 
     var t = $(this).attr("data-name");
     var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + t + "&api_key=dc6zaTOxFJmzC&limit=10";
-    console.log(queryURL);
+
 
     $.ajax({
         url: queryURL,
         method: "GET"
     }).done(function(response) {
-        var results = response.data;
-        
-        
+        results = response.data;
+        console.log(results);
+
+        // <img src="http://media1.giphy.com/media/3o85xkQpyMlnBkpB9C/200_s.gif" data-still="http://media1.giphy.com/media/3o85xkQpyMlnBkpB9C/200_s.gif" data-animate="http://media1.giphy.com/media/3o85xkQpyMlnBkpB9C/200.gif" data-state="still" class="gif">
+
         for (var i = 0; i < results.length; i++) {
-            
+
             var gifDiv = $("<div>");
 
             var rating = results[i].rating;
 
             var p = $("<p>").text("Rating: " + rating);
 
-            var tImage = $("<img>");
-            tImage.attr("src", results[i].images.fixed_height.url);
+            var tImage = $("<img src=\"\" data-still=\"\" data-animate=\"\" class=\"gifGif\" data-state=\"still\">");
+
+
+            tImage.attr("src", results[i].images.fixed_height_still.url);
+
+            tImage.attr("data-still", results[i].images.fixed_height_still.url)
+
+            tImage.attr("data-animate", results[i].images.fixed_height.url)
 
             gifDiv.prepend(p);
             gifDiv.prepend(tImage);
 
             $("#gifCorral").prepend(gifDiv);
         }
-
-
-
-
-    });
+    })
 }
 
 // When the user clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playing.
-$("img").on("click", function() {
+function pauseGif() {
+
+    var state = $(this).attr("data-state");
+
+    console.log(state);
 
     if (state === "still") {
 
@@ -97,11 +111,12 @@ $("img").on("click", function() {
         $(this).attr("src", $(this).attr("data-still"));
         $(this).attr("data-state", "still");
     };
-
-})
+}
 
 // // Adding a click event listener to all elements with a class of "movie"
 $(document).on("click", ".topical", releaseGifs);
+
+$(document).on("click", ".gifGif", pauseGif);
 
 // Calling the renderButtons function to display the intial buttons
 renderButtons();
