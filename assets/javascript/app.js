@@ -4,7 +4,7 @@
 
 // Array topics to contain button text.
 
-var topics = ["The Gummy Bears", "David the Gnome", "Doug", "Teenage Mutant Ninja Turtles", "Darkwing Duck", "The Tick", "Spongebob", "She-ra", "The Fairly Odd Parents", "Jem and the Holograms", "Rocko's Modern Life", "Daria", "Recess", "Lloyd in Space", "Jimmy Neutron", "The Rocky and Bullwinkle Show", "Animaniacs", "Carebears", "Fragglerock", "My Little Pony"];
+var topics = ["Disney's Gummy Bears", "David the Gnome", "Doug", "Teenage Mutant Ninja Turtles", "Darkwing Duck", "The Tick", "Spongebob", "She-ra", "The Fairly Odd Parents", "Jem and the Holograms", "Rocko's Modern Life", "Daria", "Recess", "Lloyd in Space", "Jimmy Neutron", "The Rocky and Bullwinkle Show", "Animaniacs", "Carebears", "Fragglerock", "My Little Pony"];
 
 var results = "";
 
@@ -58,7 +58,12 @@ function renderButtons() {
 function releaseGifs() {
 
     var t = $(this).attr("data-name");
+
+    console.log(t);
+
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + t + "&api_key=dc6zaTOxFJmzC&limit=10";
+
+    console.log(queryURL);
 
 
     $.ajax({
@@ -76,16 +81,16 @@ function releaseGifs() {
 
             var rating = results[i].rating;
 
-            var p = $("<p>").text("Rating: " + rating);
+            var p = $("<p class=\"rated\">").text("Rating: " + rating);
 
             var tImage = $("<img src=\"\" data-still=\"\" data-animate=\"\" class=\"gifGif\" data-state=\"still\">");
 
 
             tImage.attr("src", results[i].images.fixed_height_still.url);
 
-            tImage.attr("data-still", results[i].images.fixed_height_still.url)
+            tImage.attr("data-still", results[i].images.fixed_height_still.url);
 
-            tImage.attr("data-animate", results[i].images.fixed_height.url)
+            tImage.attr("data-animate", results[i].images.fixed_height.url);
 
             gifDiv.prepend(p);
             gifDiv.prepend(tImage);

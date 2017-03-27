@@ -1,0 +1,79 @@
+html,
+body {
+    height: 100%;
+    font-size: 14px;
+    position: relative;
+}
+
+header {
+    height: 10%;
+}
+
+button {
+    margin: .05%;
+    float: left;
+}
+
+hr {
+    clear: both;
+}
+
+main {
+    height: 85%;
+    width: 100%;
+    clear: both;
+}
+
+footer {
+    height: 5%;
+    text-align: center;
+    position: absolute;
+    top: 100%;
+    clear: both;
+}
+
+#gifCorral {
+    overflow: auto;
+    z-index: -1;
+    margin-left: 125px;
+    max-width: 1000px;
+    max-height: 550px;
+    margin-top: 110px;
+    margin-right: 273px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.tvFrame {
+    background: url("../images/oldTvEmptyScreen.png") no-repeat;
+    z-index: 1000000;
+    clear: both;
+    display: inline-block;
+    position: relative;
+    min-height: 870px;
+    min-width: 1285px;
+    margin: 1%;
+}
+
+.gifGif {
+    float: left;
+    border-radius: 5px;
+}
+
+.rated {
+    float: left;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
