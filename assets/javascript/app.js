@@ -12,6 +12,8 @@ var stillGif = "";
 
 var moveGif = "";
 
+var resizeCnt = 0;
+
 
 // Your app should take the topics in this array and create buttons in your HTML.
 // Try using a loop that appends a button for each string in the array.
@@ -19,7 +21,7 @@ var moveGif = "";
 // Function for creating starter buttons.
 function renderButtons() {
 
-    // Deleting the movies prior to adding new movies.
+    // Deleting the button prior to adding new buttons.
     $("#buttonCorral").empty();
 
     // Looping through the array of topics.
@@ -127,3 +129,18 @@ $(document).on("click", ".gifGif", pauseGif);
 renderButtons();
 
 // Rejoice! You just made something really cool.
+
+$(window).on("resize", function() {
+    
+
+    if (resizeCnt === 0) {
+        alert("You'll get the best viewing if you keep the window at least 1320px wide!");
+        resizeCnt++;
+    }
+
+    if (resizeCnt === 5) {
+        alert("I don't mean to be a pest, but really do start to lose the TV frame if the window is smaller than 1320px.")
+    }
+
+
+})
